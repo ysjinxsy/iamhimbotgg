@@ -21,7 +21,7 @@ logging.basicConfig(
 )
 
 intents = nextcord.Intents.all()
-guild_id = 1221092843288920065
+guild_id = 1266153230300090450
 client = commands.Bot(command_prefix="?", intents=intents)
 DATABASE_PATH = "database.db"
 async def ensure_config_exists(guild_id):
