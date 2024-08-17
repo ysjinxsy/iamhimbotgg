@@ -451,9 +451,12 @@ async def sign(interaction: nextcord.Interaction, player: nextcord.Member):
 
     # Check if the command user has the necessary permissions
     user_roles = [role.id for role in interaction.user.roles]
-    if interaction.user.id != manager_id and assistant_manager_role_id not in user_roles:
+    
+    # Check if the user has either the manager role or the assistant manager role
+    if manager_id not in user_roles and assistant_manager_role_id not in user_roles:
         await interaction.response.send_message("Only the team manager or assistant manager can use this command.", ephemeral=True)
         return
+
 
     # Fetch teams data from the database using the guild_id
     teams = await get_teams(guild_id)
