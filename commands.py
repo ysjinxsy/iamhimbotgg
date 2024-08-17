@@ -349,7 +349,7 @@ async def release(interaction: Interaction, player: nextcord.Member):
     user_roles = [role.id for role in interaction.user.roles]
     print(f"User Roles: {user_roles}")
 
-    if manager_role_id not in user_roles and assistant_manager_role_id not in user_roles:
+    if manager_role_id not in user_roles or assistant_manager_role_id not in user_roles:
         await interaction.response.send_message("You don't have the required roles to perform this action.", ephemeral=True)
         return
 
@@ -451,7 +451,7 @@ async def sign(interaction: nextcord.Interaction, player: nextcord.Member):
 
     # Check if the command user has the necessary permissions
     user_roles = [role.id for role in interaction.user.roles]
-    if interaction.user.id != manager_id and assistant_manager_role_id not in user_roles:
+    if interaction.user.id != manager_id or assistant_manager_role_id not in user_roles:
         await interaction.response.send_message("Only the team manager or assistant manager can use this command.", ephemeral=True)
         return
 
