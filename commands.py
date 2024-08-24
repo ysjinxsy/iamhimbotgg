@@ -21,7 +21,7 @@ logging.basicConfig(
 )
 
 intents = nextcord.Intents.all()
-guild_id = 1266153230300090450
+guild_id = 1276242623992041524
 client = commands.Bot(command_prefix="?", intents=intents)
 DATABASE_PATH = "database.db"
 async def ensure_config_exists(guild_id):
@@ -349,7 +349,7 @@ async def release(interaction: Interaction, player: nextcord.Member):
     user_roles = [role.id for role in interaction.user.roles]
     print(f"User Roles: {user_roles}")
 
-    if manager_role_id not in user_roles or assistant_manager_role_id not in user_roles:
+    if manager_role_id not in user_roles:
         await interaction.response.send_message("You don't have the required roles to perform this action.", ephemeral=True)
         return
 
@@ -453,7 +453,7 @@ async def sign(interaction: nextcord.Interaction, player: nextcord.Member):
     user_roles = [role.id for role in interaction.user.roles]
     
     # Check if the user has either the manager role or the assistant manager role
-    if manager_id not in user_roles and assistant_manager_role_id not in user_roles:
+    if manager_id not in user_roles:
         await interaction.response.send_message("Only the team manager or assistant manager can use this command.", ephemeral=True)
         return
 
